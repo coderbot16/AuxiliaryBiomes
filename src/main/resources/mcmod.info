@@ -1,0 +1,16 @@
+[
+{
+  "modid": "auxbiomes",
+  "name": "Auxiliary Biomes",
+  "description": "Some of the remaining ExtrabiomesXL biomes not found in Vanilla, Traverse, or Redwoods",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["coderbot16"],
+  "credits": "ExtrabiomesXL as an inspiration to make these biomes",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
