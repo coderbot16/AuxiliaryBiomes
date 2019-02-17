@@ -1,6 +1,8 @@
 package net.coderbot.auxbiomes.biomes;
 
 import net.coderbot.auxbiomes.gen.WorldGenDisabled;
+import net.minecraft.block.BlockTallGrass;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -17,6 +19,7 @@ public class BiomeMarsh extends Biome {
 	private static final int PILLAR_CHANCE_NUMERATOR = 2;
 	private static final int PILLAR_CHANCE_DENOMINATOR = 5;
 	private static final int FLOOR_LEVEL = 55;
+	private IBlockState tallGrass = Blocks.TALLGRASS.getDefaultState().withProperty(BlockTallGrass.TYPE, BlockTallGrass.EnumType.GRASS);
 
 	public BiomeMarsh(BiomeProperties properties) {
 		super(properties);
@@ -24,7 +27,7 @@ public class BiomeMarsh extends Biome {
 
 	@Override
 	public void decorate(World worldIn, Random rand, BlockPos pos) {
-		this.decorator.grassPerChunk = 32;
+		this.decorator.grassPerChunk = 0;
 		this.decorator.extraTreeChance = 0.0F;
 		this.decorator.flowersPerChunk = 0;
 		this.decorator.sandPatchesPerChunk = 0;
@@ -61,6 +64,8 @@ public class BiomeMarsh extends Biome {
 
 	@Override
 	public void genTerrainBlocks(World world, Random rand, @Nonnull ChunkPrimer chunk, int z, int x, double noiseVal) {
+		super.genTerrainBlocks(world, rand, chunk, x, z, noiseVal);
+
 		if(rand.nextInt(PILLAR_CHANCE_DENOMINATOR) <= PILLAR_CHANCE_NUMERATOR - 1) {
 			int cX = x & 15;
 			int cZ = z & 15;
@@ -76,8 +81,10 @@ public class BiomeMarsh extends Biome {
 					chunk.setBlockState(cX, y, cZ, fillerBlock);
 				}
 			}
-		}
 
-		super.genTerrainBlocks(world, rand, chunk, x, z, noiseVal);
+			if(rand.nextInt(3) <= 1 && chunk.getBlockState(cX, 62, cZ).getBlock() == Blocks.GRASS && chunk.getBlockState(cX, 63, cZ).getBlock() == Blocks.AIR) {
+				chunk.setBlockState(cX, 63, cZ, tallGrass);
+			}
+		}
 	}
 }
