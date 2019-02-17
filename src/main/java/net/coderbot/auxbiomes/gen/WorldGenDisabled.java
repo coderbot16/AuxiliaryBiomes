@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class WorldGenDisabled extends WorldGenerator {
 	public static final WorldGenDisabled DISABLED = new WorldGenDisabled();
-
+	
 	public WorldGenDisabled() {
 		super(false);
 	}

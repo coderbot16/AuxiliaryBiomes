@@ -8,6 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeDecorator;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
@@ -25,17 +26,21 @@ public class BiomeMarsh extends Biome {
 		super(properties);
 	}
 
+	public static void makeBarren(BiomeDecorator decorator) {
+		decorator.grassPerChunk = 0;
+		decorator.extraTreeChance = 0.0F;
+		decorator.flowersPerChunk = 0;
+		decorator.sandPatchesPerChunk = 0;
+		decorator.gravelPatchesPerChunk = 0;
+		decorator.clayPerChunk = 0;
+		decorator.reedGen = WorldGenDisabled.DISABLED;
+		decorator.mushroomRedGen = WorldGenDisabled.DISABLED;
+		decorator.mushroomBrownGen = WorldGenDisabled.DISABLED;
+	}
+
 	@Override
 	public void decorate(World worldIn, Random rand, BlockPos pos) {
-		this.decorator.grassPerChunk = 0;
-		this.decorator.extraTreeChance = 0.0F;
-		this.decorator.flowersPerChunk = 0;
-		this.decorator.sandPatchesPerChunk = 0;
-		this.decorator.gravelPatchesPerChunk = 0;
-		this.decorator.clayPerChunk = 0;
-		this.decorator.reedGen = WorldGenDisabled.DISABLED;
-		this.decorator.mushroomRedGen = WorldGenDisabled.DISABLED;
-		this.decorator.mushroomBrownGen = WorldGenDisabled.DISABLED;
+		makeBarren(decorator);
 
 		ChunkPos chunkPos = new ChunkPos(pos);
 
