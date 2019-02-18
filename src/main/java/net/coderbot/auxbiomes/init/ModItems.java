@@ -1,6 +1,7 @@
 package net.coderbot.auxbiomes.init;
 
 import net.coderbot.auxbiomes.AuxiliaryBiomes;
+import net.coderbot.auxbiomes.ModConfig;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -19,6 +20,10 @@ public class ModItems {
 
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Item> event) {
+		if(!ModConfig.wasteland.registerCrackedSand) {
+			return;
+		}
+
 		CRACKED_SAND = new ItemBlock(ModBlocks.CRACKED_SAND);
 		CRACKED_SAND.setRegistryName(new ResourceLocation(AuxiliaryBiomes.MODID, "cracked_sand"))
 				.setUnlocalizedName(AuxiliaryBiomes.MODID + ".cracked_sand");
@@ -28,6 +33,10 @@ public class ModItems {
 
 	@SubscribeEvent
 	public static void registerModels(ModelRegistryEvent event) {
+		if(!ModConfig.wasteland.registerCrackedSand) {
+			return;
+		}
+
 		if(FMLCommonHandler.instance().getSide() == Side.CLIENT) {
 			registerModel(event, CRACKED_SAND);
 		}

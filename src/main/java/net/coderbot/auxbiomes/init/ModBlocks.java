@@ -1,6 +1,7 @@
 package net.coderbot.auxbiomes.init;
 
 import net.coderbot.auxbiomes.AuxiliaryBiomes;
+import net.coderbot.auxbiomes.ModConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
@@ -14,6 +15,10 @@ public class ModBlocks {
 
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
+		if(!ModConfig.wasteland.registerCrackedSand) {
+			return;
+		}
+
 		CRACKED_SAND = new Block(Material.ROCK);
 		CRACKED_SAND.setRegistryName(new ResourceLocation(AuxiliaryBiomes.MODID, "cracked_sand"))
 				.setHardness(1.2F)
