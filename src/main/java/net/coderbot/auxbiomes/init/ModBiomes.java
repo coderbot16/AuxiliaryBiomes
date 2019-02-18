@@ -40,8 +40,7 @@ public class ModBiomes {
 					.setRainDisabled()
 					.setWaterColor(0xF08000);
 
-			// TODO: Cracked Sand
-			WASTELAND = registerBiome(event, new BiomeWasteland(wastelandProperties, Blocks.STONE.getDefaultState(), true), BiomeManager.BiomeType.DESERT, "wasteland", 5);
+			WASTELAND = registerBiome(event, new BiomeWasteland(wastelandProperties, ModBlocks.CRACKED_SAND.getDefaultState(), true), BiomeManager.BiomeType.DESERT, "wasteland", 5);
 			BiomeDictionary.addTypes(WASTELAND, BiomeDictionary.Type.WASTELAND, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY);
 		}
 

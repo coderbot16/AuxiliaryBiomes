@@ -1,0 +1,10 @@
+{
+  "variants": {
+	"normal": [
+	  { "model": "auxbiomes:cracked_sand" },
+	  { "model": "auxbiomes:cracked_sand", "y": 90 },
+	  { "model": "auxbiomes:cracked_sand", "y": 180 },
+	  { "model": "auxbiomes:cracked_sand", "y": 270 }
+	]
+  }
+}
